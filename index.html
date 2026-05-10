@@ -15,13 +15,12 @@
   --creme:#f5eef5;
   --gris:#2a1a26;
 }
-html,body{
-  background:var(--noir);
+html{background:transparent;}
+body{
+  background:transparent;
   color:var(--creme);
   font-family:'Share Tech Mono',monospace;
-}
-body{
-  padding:0;
+  padding:0;margin:0;
 }
 
 /* GRAIN */
@@ -54,7 +53,7 @@ body::after{
   display:grid;
   grid-template-columns:1fr 1fr;
   min-height:420px;
-  border-bottom:12px solid var(--rose);
+  background:var(--noir);
 }
 .hero-cover{
   position:relative;
@@ -165,7 +164,7 @@ body::after{
 </head>
 <body>
 
-<div style="border:12px solid var(--rose);">
+<div style="border:12px solid var(--rose);background:var(--noir);">
 <div class="strip">
   <div class="strip-track">
     <span>UNE FACE</span><span>1000 EX.</span><span>12 €</span><span>OFFSIDE RECORDS</span><span>CUIR</span><span>MONOFACE</span><span>PRÉCOMMANDE</span><span>BIENTÔT</span>
