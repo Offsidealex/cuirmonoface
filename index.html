@@ -19,7 +19,9 @@ html,body{
   background:var(--noir);
   color:var(--creme);
   font-family:'Share Tech Mono',monospace;
-  min-height:100vh;
+}
+body{
+  padding:0;
 }
 
 /* GRAIN */
@@ -52,7 +54,7 @@ body::after{
   display:grid;
   grid-template-columns:1fr 1fr;
   min-height:420px;
-  border-bottom:2px solid var(--rose);
+  border-bottom:12px solid var(--rose);
 }
 .hero-cover{
   position:relative;
@@ -73,7 +75,7 @@ body::after{
 }
 
 .hero-text{
-  padding:2.2rem 2rem 2rem;
+  padding:2.2rem 2rem 2.5rem;
   display:flex;flex-direction:column;justify-content:space-between;
   border-left:2px solid var(--rose);
 }
@@ -152,15 +154,6 @@ body::after{
 }
 .btn-pre:hover{background:var(--noir);color:var(--rose);}
 
-/* FOOTER STRIP */
-.foot{
-  border-top:2px solid var(--gris);
-  padding:0.6rem 1.4rem;
-  display:flex;justify-content:space-between;align-items:center;
-  font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#664466;
-}
-.foot a{color:var(--rose);text-decoration:none;}
-
 /* MOBILE */
 @media(max-width:600px){
   .hero{grid-template-columns:1fr;}
@@ -172,6 +165,7 @@ body::after{
 </head>
 <body>
 
+<div style="border:12px solid var(--rose);">
 <div class="strip">
   <div class="strip-track">
     <span>UNE FACE</span><span>1000 EX.</span><span>12 €</span><span>OFFSIDE RECORDS</span><span>CUIR</span><span>MONOFACE</span><span>PRÉCOMMANDE</span><span>BIENTÔT</span>
@@ -206,11 +200,9 @@ body::after{
     </div>
   </div>
 </div>
-
-<div class="foot">
-  <span>© Offside Records · 2026</span>
-  <a href="https://www.offsiderecords.fr" target="_blank" rel="noopener">offsiderecords.fr ↗</a>
 </div>
+
+
 
 <script>
 window.addEventListener('load',()=>{
