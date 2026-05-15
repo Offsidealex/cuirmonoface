@@ -153,6 +153,41 @@ body::after{
 }
 .btn-pre:hover{background:var(--noir);color:var(--rose);}
 
+/* DATES STRIP */
+.dates{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0.6rem;
+  margin-bottom:1rem;
+}
+.date-card{
+  border:2px solid var(--rose);
+  padding:0.7rem 0.8rem 0.8rem;
+  background:transparent;
+  color:var(--creme);
+}
+.date-card.fill{
+  background:var(--rose);
+  color:var(--noir);
+}
+.date-eyebrow{
+  font-family:'Share Tech Mono',monospace;
+  font-size:0.6rem;letter-spacing:0.25em;text-transform:uppercase;
+  opacity:0.8;
+  margin-bottom:0.15rem;
+}
+.date-num{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:2rem;line-height:1;
+  margin-bottom:0.35rem;
+  letter-spacing:0.02em;
+}
+.date-label{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;line-height:1;letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+
 /* MOBILE */
 @media(max-width:600px){
   .hero{grid-template-columns:1fr; min-height:auto;}
@@ -188,14 +223,23 @@ body::after{
       </p>
     </div>
     <div>
+      <div class="dates">
+        <div class="date-card">
+          <div class="date-eyebrow">Vendredi</div>
+          <div class="date-num">22.05</div>
+          <div class="date-label">Disque entier<br>en écoute</div>
+        </div>
+        <div class="date-card fill">
+          <div class="date-eyebrow">Dimanche</div>
+          <div class="date-num">25.05</div>
+          <div class="date-label">Précommandes<br>ouvertes</div>
+        </div>
+      </div>
       <div class="audio-zone">
         <div class="track-name" style="font-size:0.65rem;letter-spacing:0.2em;margin-bottom:0.5rem;color:#c8a8c0;">EXTRAITS</div>
         <iframe style="border:0;width:100%;height:42px;display:block;margin-bottom:0.4rem;" src="https://bandcamp.com/EmbeddedPlayer/track=1474410716/size=small/bgcol=0a0007/linkcol=e8007a/transparent=true/" seamless><a href="https://cuir1.bandcamp.com/track/derni-re-minute">Dernière minute de CUIR</a></iframe>
         <iframe style="border:0;width:100%;height:42px;display:block;" src="https://bandcamp.com/EmbeddedPlayer/track=2245358392/size=small/bgcol=0a0007/linkcol=e8007a/transparent=true/" seamless><a href="https://cuir1.bandcamp.com/track/road-trip">Road Trip de CUIR</a></iframe>
       </div>
-      <a class="btn-pre" href="https://www.offsiderecords.fr" target="_blank" rel="noopener">
-        BIENTÔT →
-      </a>
     </div>
   </div>
 </div>
