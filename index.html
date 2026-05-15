@@ -1,64 +1,221 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>CUIR · MONOFACE — Teaser 15s</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>CUIR — MONOFACE</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Bungee+Inline&family=IBM+Plex+Mono:wght@400;500;700&family=Special+Elite&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Share+Tech+Mono&display=swap" rel="stylesheet"/>
 <style>
-  @font-face {
-    font-family: 'CUIR Logo';
-    src: url('assets/vtks-rude-metal-shadow.ttf') format('truetype');
-    font-display: block;
-  }
-  html, body {
-    margin: 0; padding: 0;
-    background: #050304;
-    min-height: 100vh;
-    overflow: hidden;
-    font-family: 'IBM Plex Mono', monospace;
-    color: #f3efe6;
-  }
-  #video-root {
-    position: fixed; inset: 0;
-  }
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --rose:#e8007a;
+  --rose-pale:#ff4aaa;
+  --noir:#0a0007;
+  --creme:#f5eef5;
+  --gris:#2a1a26;
+}
+html{background:transparent;}
+body{
+  background:transparent;
+  color:var(--creme);
+  font-family:'Share Tech Mono',monospace;
+  padding:0;margin:0;
+}
 
-  /* Pre-baked grain noises swapped via Grain component */
-  :root {
-    --grain-0: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='1'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    --grain-1: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2' stitchTiles='stitch' seed='7'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    --grain-2: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='0.95' numOctaves='2' stitchTiles='stitch' seed='13'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-    --grain-3: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='1.0' numOctaves='2' stitchTiles='stitch' seed='23'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.6 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
-  }
+/* GRAIN */
+body::after{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:100;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='g'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.4 0'/></filter><rect width='100%25' height='100%25' filter='url(%23g)'/></svg>");
+  mix-blend-mode:overlay;opacity:0.6;
+}
+
+/* TOPSTRIP */
+.strip{
+  background:var(--rose);
+  color:var(--noir);
+  font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;
+  padding:0.4rem 0;
+  overflow:hidden;
+  border-bottom:2px solid var(--noir);
+}
+.strip-track{
+  display:flex;gap:2.5rem;white-space:nowrap;
+  animation:run 22s linear infinite;
+  font-family:'Bebas Neue',sans-serif;font-size:1rem;
+}
+.strip-track span::after{content:"✦";margin-left:2.5rem;}
+@keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* HERO GRID */
+.hero{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  min-height:420px;
+  background:var(--noir);
+}
+.hero-cover{
+  position:relative;
+  overflow:hidden;
+  background:#1a0015 url("cuir-pochette.jpg") center/75% auto no-repeat;
+  filter:contrast(1.1) saturate(1.2);
+}
+.hero-cover::after{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(to right,transparent 60%,var(--noir) 100%);
+}
+/* halftone */
+.hero-cover::before{
+  content:"";position:absolute;inset:0;z-index:1;
+  background-image:radial-gradient(circle,#000 0.7px,transparent 1px);
+  background-size:3.5px 3.5px;
+  mix-blend-mode:multiply;opacity:0.4;
+}
+
+.hero-text{
+  padding:2.2rem 2rem 2.5rem;
+  display:flex;flex-direction:column;justify-content:space-between;
+  border-left:2px solid var(--rose);
+}
+.stamp{
+  display:inline-block;align-self:flex-start;
+  border:2px solid var(--rose);color:var(--rose);
+  padding:0.3rem 0.7rem;
+  font-size:0.65rem;letter-spacing:0.25em;text-transform:uppercase;
+  transform:rotate(-2deg);
+  margin-bottom:1rem;
+}
+.titre{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(3.5rem,8vw,6.5rem);
+  line-height:0.85;
+  color:var(--creme);
+  margin-bottom:1rem;
+}
+.titre .rose{color:var(--rose);}
+.titre .barre{
+  position:relative;display:inline-block;opacity:0.35;
+}
+.titre .barre::after{
+  content:"";position:absolute;left:-2%;right:-2%;top:46%;
+  height:0.16em;background:var(--rose);transform:rotate(-2deg);
+}
+.desc{
+  font-size:0.8rem;line-height:1.6;
+  color:#c8a8c0;
+  max-width:36ch;
+  margin-bottom:1.2rem;
+}
+.desc strong{color:var(--creme);}
+
+/* AUDIO */
+.audio-zone{
+  background:var(--gris);
+  border:1px solid var(--rose);
+  padding:0.8rem 1rem;
+  margin-bottom:1rem;
+}
+.audio-top{
+  display:flex;align-items:center;gap:0.8rem;
+  margin-bottom:0.5rem;
+}
+.play-btn{
+  width:36px;height:36px;border-radius:50%;
+  background:var(--rose);border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+  transition:background 0.15s;
+}
+.play-btn:hover{background:var(--rose-pale);}
+.play-btn svg{width:14px;height:14px;fill:var(--noir);}
+.track-info{flex:1;}
+.track-name{font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--creme);}
+.track-time{font-size:0.65rem;color:#888;margin-top:0.15rem;}
+.progress-bg{
+  height:3px;background:#3a2036;
+  cursor:pointer;position:relative;
+}
+.progress-fill{
+  height:100%;background:var(--rose);width:0%;
+  transition:width 0.25s linear;pointer-events:none;
+}
+
+/* CTA */
+.btn-pre{
+  display:block;text-align:center;
+  background:var(--rose);color:var(--noir);
+  font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.15em;
+  padding:0.6rem 1.2rem;
+  text-decoration:none;
+  border:2px solid var(--rose);
+  transition:background 0.15s,color 0.15s;
+}
+.btn-pre:hover{background:var(--noir);color:var(--rose);}
+
+/* MOBILE */
+@media(max-width:600px){
+  .hero{grid-template-columns:1fr; min-height:auto;}
+  .hero-cover{min-height:220px;}
+  .hero-text{border-left:none;border-top:2px solid var(--rose);}
+  .titre{font-size:3.5rem;}
+}
 </style>
 </head>
 <body>
 
-<div id="video-root" data-screen-label="CUIR · MONOFACE teaser"></div>
+<div style="border:12px solid var(--rose);background:var(--noir);">
+<div class="strip">
+  <div class="strip-track">
+    <span>UNE FACE</span><span>1000 EX.</span><span>12 €</span><span>OFFSIDE RECORDS</span><span>CUIR</span><span>MONOFACE</span><span>PRÉCOMMANDE</span><span>BIENTÔT</span>
+    <span>UNE FACE</span><span>1000 EX.</span><span>12 €</span><span>OFFSIDE RECORDS</span><span>CUIR</span><span>MONOFACE</span><span>PRÉCOMMANDE</span><span>BIENTÔT</span>
+  </div>
+</div>
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<div class="hero">
+  <div class="hero-cover" aria-label="Pochette CUIR — Monoface"></div>
+  <div class="hero-text">
+    <div>
+      <div class="stamp">Bientôt · Précommandes</div>
+      <div class="titre">
+        <span class="rose" style="font-size:clamp(4.3rem,9.6vw,7.2rem);display:block;line-height:1;margin-bottom:0.15em;">MONOFACE</span>
+        FACE<span class="rose"> A</span><span class="rose">.</span><br>
+        <span class="barre">FACE B</span><span class="rose">.</span>
+      </div>
+      <p class="desc">
+        CUIR — Le nouveau disque. <strong>Monoface.</strong> Une seule face gravée, une seule face écoutée.
+        Pressage à <strong>1000 exemplaires</strong>, <strong>12&nbsp;€</strong>, en précommande très bientôt sur offsiderecords.fr.
+      </p>
+    </div>
+    <div>
+      <div class="audio-zone">
+        <div class="track-name" style="font-size:0.65rem;letter-spacing:0.2em;margin-bottom:0.5rem;color:#c8a8c0;">EXTRAITS</div>
+        <iframe style="border:0;width:100%;height:42px;display:block;margin-bottom:0.4rem;" src="https://bandcamp.com/EmbeddedPlayer/track=1474410716/size=small/bgcol=0a0007/linkcol=e8007a/transparent=true/" seamless><a href="https://cuir1.bandcamp.com/track/derni-re-minute">Dernière minute de CUIR</a></iframe>
+        <iframe style="border:0;width:100%;height:42px;display:block;" src="https://bandcamp.com/EmbeddedPlayer/track=2245358392/size=small/bgcol=0a0007/linkcol=e8007a/transparent=true/" seamless><a href="https://cuir1.bandcamp.com/track/road-trip">Road Trip de CUIR</a></iframe>
+      </div>
+      <a class="btn-pre" href="https://www.offsiderecords.fr" target="_blank" rel="noopener">
+        BIENTÔT →
+      </a>
+    </div>
+  </div>
+</div>
+</div>
 
-<script type="text/babel" src="animations.jsx"></script>
-<script type="text/babel" src="cuir-scenes.jsx"></script>
+<script>
+function sendHeight(){
+  const h = document.documentElement.scrollHeight;
+  window.parent.postMessage({height: h}, '*');
+}
 
-<script type="text/babel" data-presets="env,react">
-  const root = ReactDOM.createRoot(document.getElementById('video-root'));
-  root.render(
-    <Stage
-      width={1080}
-      height={1920}
-      duration={18}
-      background="#0a0708"
-      persistKey="cuir-monoface-teaser"
-    >
-      <CuirMonofaceVideo />
-    </Stage>
-  );
+window.addEventListener('load', () => {
+  sendHeight();
+  setTimeout(sendHeight, 800);
+  setTimeout(sendHeight, 2000);
+});
+
+if(window.ResizeObserver){
+  new ResizeObserver(sendHeight).observe(document.body);
+}
 </script>
-
 </body>
 </html>
